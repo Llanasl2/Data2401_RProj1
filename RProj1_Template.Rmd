@@ -18,6 +18,11 @@ library(datasauRus)
 ### Exercise 1
 
 (Type your answer to Exercise 1 here. This exercise does not require any R code. **Remove notes like this in the final product that you turn in**)
+```
+datasaurus_dozen%>%
+count(dataset) %>%
+print(13)
+```
 
 ### Exercise 2
 
@@ -40,19 +45,20 @@ dino_data %>%
 
 ### Exercise 3
 
-(Add code and narrative as needed. Note that the R chunks are labeled with `plot-star` and `cor-star` to provide spaces to place the code for plotting and calculating the correlation coefficient. To finish, remember to clean up the narrative by removing these instructions.)
-
-
+First let's plot the data in the star dataset:
 
 ```{r plot-star}
-
-
+dino_data <- datasaurus_dozen %>%
+  filter(dataset == "star")
+ggplot(data = dino_data, mapping = aes(x = x, y = y)) +
+  geom_point()
 ```
 
-I'm some text, you should replace me with more meaningful text...
+Here, we are calculating the correlation between 'x' and 'y' in this dataset:
  
 ```{r cor-star}
-
+dino_data %>%
+summarize(r = cor(x,y))
 
 ```
 
