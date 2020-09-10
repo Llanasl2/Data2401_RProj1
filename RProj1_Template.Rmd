@@ -2,7 +2,10 @@
 title: "R Project 1 - Hello R"
 author: "Luis Llanas"
 date: "9/16/2020"
-output: html_document
+output: 
+  html_document: 
+    highlight: tango
+    theme: flatly
 ---
 
 MAKE SURE YOU READ AND FOLLOW **ALL** INSTRUCTIONS ON THE INSTRUCTION DOCUMENT. 
@@ -17,12 +20,9 @@ library(datasauRus)
 
 ### Exercise 1
 
-(Type your answer to Exercise 1 here. This exercise does not require any R code. **Remove notes like this in the final product that you turn in**)
-```
-datasaurus_dozen%>%
-count(dataset) %>%
-print(13)
-```
+There are 1,846 rows in this dataset, with 3 columns. The variables are dataset, x, and y.
+
+
 
 ### Exercise 2
 
@@ -83,4 +83,21 @@ summarize(r = cor(x,y))
 
 ### Exercise 5
 
-(Add code and narrative as needed. To add R chunks either type out the backticks, curly braces, and the letter `r` or use the Insert chunk button above, with the green +C.)
+Here, we are plotting all the datasets. 
+
+```{r}
+ggplot(datasaurus_dozen, aes(x = x, y = y, color = dataset))+
+geom_point()+
+facet_wrap(~ dataset, ncol = 3) + # facet the dataset variable, in 3 cols
+theme(legend.position = "none")
+```
+
+Here, we are going to generate all the summary correlation coefficients
+```{r}
+datasaurus_dozen %>%
+group_by(dataset) %>%
+summarize(r = cor(x, y)) %>%
+print(13)
+
+```
+
