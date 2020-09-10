@@ -64,15 +64,20 @@ summarize(r = cor(x,y))
 
 ### Exercise 4
 
-(Add code and narrative as needed. Note that two R chunks are given but they are not labeled. Use the convention from above to name them appropriately.)
+For this exercise, we are plotting the data for the "circle" dataset
 
 ```{r}
-
+dino_data <- datasaurus_dozen %>%
+  filter(dataset == "circle")
+ggplot(data = dino_data, mapping = aes(x = x, y = y)) +
+  geom_point()
 
 ```
 
+Here, we are going to calculate the correlation between 'x' and 'y' in the circle dataset
 ```{r}
-
+dino_data %>%
+summarize(r = cor(x,y))
 
 ```
 
