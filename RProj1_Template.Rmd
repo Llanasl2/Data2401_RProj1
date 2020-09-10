@@ -6,6 +6,8 @@ output:
   html_document: 
     highlight: tango
     theme: flatly
+    fig_width: 8
+    fig_height: 6
 ---
 
 MAKE SURE YOU READ AND FOLLOW **ALL** INSTRUCTIONS ON THE INSTRUCTION DOCUMENT. 
